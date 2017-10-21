@@ -10,7 +10,7 @@ export default {
             // foreColor,backColor
             command: 'foreColor',
             colors: [
-                '#474a4f', '#7e848c', '#3672b3', '#2e445c', '#e1274c', '#972245'
+                '#474a4f', '#7e848c', '#3672b3'
             ]
         }
     },

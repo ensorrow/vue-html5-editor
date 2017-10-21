@@ -1,7 +1,7 @@
 /**
  * Vue-html5-editor 1.1.0
  * https://github.com/PeakTai/vue-html5-editor
- * build at Sat Oct 21 2017 14:47:27 GMT+0800 (CST)
+ * build at Sat Oct 21 2017 19:23:31 GMT+0800 (CST)
  */
 
 (function (global, factory) {
@@ -104,7 +104,7 @@ var align = {
     dashboard: dashboard
 };
 
-var template$1 = "<div> <div> <label> <input type=\"radio\" value=\"foreColor\" v-model=\"command\">&nbsp; {{$parent.locale[\"fore color\"]}} </label> <label> <input type=\"radio\" value=\"backColor\" v-model=\"command\">&nbsp; {{$parent.locale[\"background color\"]}} </label> </div> <div> <div v-for=\"color in colors\" :style=\"{'background-color':color}\" class=\"color-card\" @click=\"changeColor(color)\"> </div> <div style=\"clear: both\"></div> </div> </div> ";
+var template$1 = "<div> <div> <div v-for=\"color in colors\" :style=\"{'background-color':color}\" class=\"color-card\" @click=\"changeColor(color)\"> </div> <div style=\"clear: both\"></div> </div> </div> ";
 
 __$styleInject(".vue-html5-editor .color-card{margin:2px;width:30px;height:30px;float:left;cursor:pointer}",undefined);
 
@@ -118,7 +118,7 @@ var dashboard$1 = {
             // foreColor,backColor
             command: 'foreColor',
             colors: [
-                '#474a4f', '#7e848c', '#3672b3', '#2e445c', '#e1274c', '#972245'
+                '#474a4f', '#7e848c', '#3672b3'
             ]
         }
     },
@@ -153,7 +153,7 @@ var eraser = {
     }
 };
 
-var template$2 = "<div class=\"dashboard-font\" style=\"line-height: 36px\"> <div> <label>{{$parent.locale[\"heading\"]}}:</label> <button v-for=\"h in 6\" type=\"button\" @click=\"setHeading(h)\">H{{h}}</button> </div> <div> <label> {{$parent.locale[\"font size\"]}}: </label> <button v-for=\"size in fontSizeList\" type=\"button\" @click=\"setFontSize(size)\">{{size}}</button> </div> <div> <label> {{$parent.locale[\"line height\"]}}: </label> <button v-for=\"lh in lineHeightList\" type=\"button\" @click=\"setLineHeight(lh)\"> {{lh}} </button> </div> </div>";
+var template$2 = "<div class=\"dashboard-font\" style=\"line-height: 36px\"> <div> <label>{{$parent.locale['style']}}</label> <button @click=\"setHeading()\">标题</button> <button @click=\"setContent()\">正文</button> </div> </div>";
 
 /**
  * Created by peak on 2017/2/14.
@@ -192,33 +192,21 @@ var dashboard$2 = {
     template: template$2,
     data: function data(){
         return {
-            lineHeightList: [
-                '1.0', '1.2', '1.5', '1.8', '2.0', '2.5', '3.0'
-            ],
-            fontSizeList: [
-                '12px', '14px', '16px', '18px'
-            ]
+            
         }
     },
     methods: {
         setFontSize: function setFontSize(size){
             this.$parent.execCommand('fontSize', size);
         },
-        setHeading: function setHeading(heading){
-            this.$parent.execCommand('formatBlock', ("h" + heading));
+        setContent: function setContent(){
+            this.$parent.execCommand('formatBlock', 'p');
+        },
+        setHeading: function setHeading(){
+            this.$parent.execCommand('formatBlock', 'h1');
         },
         setLineHeight: function setLineHeight(lh){
             this.$parent.execCommand(Command.LINE_HEIGHT, lh);
-        }
-    },
-    created: function created(){
-        var config = this.$options.module.config;
-        // font name
-        if (!config) {
-            return
-        }
-        if (Array.isArray(config.fontNames)) {
-            this.nameList = config.fontNames;
         }
     }
 };
@@ -648,7 +636,7 @@ var table = {
     dashboard: dashboard$7
 };
 
-var template$8 = "<div> <button type=\"button\" @click=\"$parent.execCommand('bold')\">{{$parent.locale[\"bold\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('italic')\">{{$parent.locale[\"italic\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('underline')\">{{$parent.locale[\"underline\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('strikeThrough')\">{{$parent.locale[\"strike through\"]}} </button> <button type=\"button\" @click=\"$parent.execCommand('subscript')\">{{$parent.locale[\"subscript\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('superscript')\">{{$parent.locale[\"superscript\"]}}</button> </div> ";
+var template$8 = "<div> <button type=\"button\" @click=\"$parent.execCommand('bold')\">{{$parent.locale[\"bold\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('underline')\">{{$parent.locale[\"underline\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('strikeThrough')\">{{$parent.locale[\"strike through\"]}} </button> </div> ";
 
 var dashboard$8 = {
     template: template$8

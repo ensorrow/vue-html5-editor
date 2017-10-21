@@ -1,20 +1,7 @@
 <div class="dashboard-font" style="line-height: 36px;">
     <div>
-        <label>{{$parent.locale["heading"]}}:</label>
-        <button v-for="h in 6" type="button" @click="setHeading(h)">H{{h}}</button>
-    </div>
-    <div>
-        <label>
-            {{$parent.locale["font size"]}}:
-        </label>
-        <button v-for="size in fontSizeList" type="button" @click="setFontSize(size)">{{size}}</button>
-    </div>
-    <div>
-        <label>
-            {{$parent.locale["line height"]}}:
-        </label>
-        <button v-for="lh in lineHeightList" type="button" @click="setLineHeight(lh)">
-            {{lh}}
-        </button>
+        <label>{{$parent.locale['style']}}</label>
+        <button @click="setHeading()">标题</button>
+        <button @click="setContent()">正文</button>
     </div>
 </div>

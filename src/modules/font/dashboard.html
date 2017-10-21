@@ -5,12 +5,6 @@
     </div>
     <div>
         <label>
-            {{$parent.locale["font name"]}}:
-        </label>
-        <button v-for="name in nameList" type="button" @click="setFontName(name)">{{name}}</button>
-    </div>
-    <div>
-        <label>
             {{$parent.locale["font size"]}}:
         </label>
         <button v-for="size in fontSizeList" type="button" @click="setFontSize(size)">{{size}}</button>

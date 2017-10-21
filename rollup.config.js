@@ -50,7 +50,13 @@ export default {
             }
         }),
         commonJs({
-            include: 'node_modules/lrz/**'
+            // include: 'node_modules/lrz/**',
+            namedExports: {
+                // left-hand side can be an absolute path, a path
+                // relative to the current directory, or the name
+                // of a module in node_modules
+                'node_modules/lrz/lrz.bundle.js': [ 'lrz' ]
+              }
         }),
         nodeResolve({jsnext: true}),
         buble({
